@@ -1,0 +1,26 @@
+apiVersion: work.open-cluster-management.io/v1
+kind: ManifestWork
+metadata:
+  name: argo-guestbook
+  namespace: cluster1
+spec:
+  workload:
+    manifests:
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Application
+        metadata:
+          name: guestbook
+          namespace: argocd
+        spec:
+          project: default
+          source:
+            repoURL: https://github.com/argoproj/argocd-example-apps
+            targetRevision: HEAD
+            path: guestbook
+          destination:
+            server: https://kubernetes.default.svc
+            namespace: guestbook
+          syncPolicy:
+            automated:
+              prune: true
+              selfHeal: true
