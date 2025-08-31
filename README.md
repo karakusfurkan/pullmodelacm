@@ -192,3 +192,6 @@ spec:
 ## Lisans
 
 MIT
+
+
+Bu Markdown Chatgpt'den destek alınarak hazırlanmıştır.
